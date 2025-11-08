@@ -1,4 +1,4 @@
-# E-Commerce project-React + Vite
+# E-Commerce project: React + Vite
 
 This is a ongoing self-explored e-commerce project uses a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
