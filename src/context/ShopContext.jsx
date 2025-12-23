@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { products } from "../assets/assets";
+import { toast } from "react-toastify";
 
 export const ShopContext = createContext();
 
@@ -12,6 +13,12 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
 
     const addToCart = async (itemId, size) => {
+
+        if(!size){
+            toast.error('Select product size');
+            return;
+        }
+
         let cartData = structuredClone(cartItems);
         if(cartData[itemId]){//if id object already exists
             if(cartData[itemId][size])//if nested size object exists
@@ -25,10 +32,6 @@ const ShopContextProvider = (props) => {
         }
         setCartItems(cartData);
     }
-
-    useEffect(()=>{
-        console.log(cartItems);
-    }, [cartItems])
 
     const value = {
         products, currency, delivery_fee,
